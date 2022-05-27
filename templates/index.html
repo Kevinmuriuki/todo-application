@@ -7,6 +7,10 @@
     <title>Todo Application</title>
 </head>
 <body>
+    <form action="todos/create" method="post">
+        <input type="text" class="todo-item" name="todo-item" placeholder="Add todo item">
+        <input type="submit" value="Submit">
+    </form>
     <ul>
         {% for item in data %}
             <li>{{ item.description }}</li>
