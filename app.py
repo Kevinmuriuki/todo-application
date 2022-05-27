@@ -6,14 +6,15 @@ from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv())
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')
+
 db = SQLAlchemy(app)
 
-class Todo(db.model):
+class Todo(db.Model):
     __tablename__ = 'todos'
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String(), nullable=False)
 
-    def __repr__(self) -> str:
+    def __repr__(self):
         return f'<Todo {self.id} {self.description}>'
 
 db.create_all()
