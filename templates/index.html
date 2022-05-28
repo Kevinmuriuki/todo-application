@@ -5,16 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo Application</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <form action="todos/create" method="post">
-        <input type="text" class="todo-item" name="todo-item" placeholder="Add todo item">
+    <form action="todos/create" method="post" id="form">
+        <input type="text" id="description" name="description" placeholder="Add todo item">
         <input type="submit" value="Submit">
     </form>
-    <ul>
+    <div id="error" class="hidden">Something went wrong!</div>
+    <ul id="todos">
         {% for item in data %}
             <li>{{ item.description }}</li>
         {% endfor %}
     </ul>
+
+    <script type="text/javascript" src="/static/app.js" defer></script>
 </body>
 </html>
