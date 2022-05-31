@@ -9,6 +9,28 @@
         .hidden {
             display: none;
         }
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 160px;
+        }
+
+        li {
+            clear: both;
+            
+        }
+
+        li button {
+            -webkit-appearance: button;
+            background-color: #fff;
+            border: none;
+            outline: none;
+            color: red;
+            float: right;
+            cursor: pointer;
+            font-size: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -18,8 +40,14 @@
     </form>
     <div id="error" class="hidden">Something went wrong!</div>
     <ul id="todos">
-        {% for item in data %}
-            <li>{{ item.description }}</li>
+        <form action="todos/create" method="post" id="form">
+        {% for todo in todos %}
+
+        <li>
+                <input class="check-completed" data-id={{ todo.id }} type="checkbox" {% if todo.completed %} checked {% endif %}/>
+                {{ todo.description }}
+                <button>&cross;</button>
+            </li>
         {% endfor %}
     </ul>
 
